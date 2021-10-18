@@ -24,25 +24,11 @@ const swaggerOptions = {
     }
   },
   // ['.routes/*.js']
-  apis: ["app.js"]
+  apis: ["app.js", 'routes/*.js']
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
-/**
- * @swagger
- * /api:
- *   get:
- *     description: Welcome to swagger-jsdoc!
- *     responses:
- *       200:
- *         description: Returns a mysterious string.
- */
- app.get('/api', function(req, res, next) {
-  console.log('request');
-  res.status(200).send('Test');
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
